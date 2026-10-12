@@ -2,8 +2,16 @@ colang_version: "1.0"
 
 models:
   - type: main
-    engine: openai
-    model: gpt-4o-mini
+    engine: deepseek
+    model: deepseek-flash
+    parameters:
+      model_name: deepseek-flash  # engine tự đăng ký không được NeMo map model → model_name
+      base_url: https://api.deepseek.com
+      temperature: 0
+      # self check gọi max_tokens=3; reasoning sẽ ăn hết token → response rỗng
+      extra_body:
+        thinking:
+          type: disabled
 
 instructions:
   - type: general
